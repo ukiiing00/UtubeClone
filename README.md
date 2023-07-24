@@ -1,16 +1,18 @@
-# npm init
+# SET UP
+
+## npm init
 package.json setting
 
-# run
+## run
 npm run {scripts-key}
 
-# npm i
+## npm i
 package.json > dependencies 
 
-# package.json > devDependencies 
+## package.json > devDependencies 
 for developer
 
-## Babel
+### Babel
 npm install --save-dev @babel/core
 npm install @babel/preset-env --save-dev
 최신 자바스크립트를 node가 이해하도록 컴파일 해줌 
@@ -19,7 +21,7 @@ babel compile script
 
 babel-node *.js
 
-## Nodemon
+### Nodemon
 npm install @babel/core @babel/node --save-dev
 npm i nodemon --save-dev
 nodemon --exec npm run babel-node -- path/to/script.js
