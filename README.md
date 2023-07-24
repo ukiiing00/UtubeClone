@@ -26,3 +26,6 @@ npm install @babel/core @babel/node --save-dev
 npm i nodemon --save-dev
 nodemon --exec npm run babel-node -- path/to/script.js
 파일이 수정되면 재실행 해줌
+
+### Express
+https://expressjs.com/ko/4x/api.html#res.send
