@@ -1,8 +1,5 @@
-const trending = (req, res) => res.send('Home Page Video');
-const see = (req, res) => {
-    console.log(req.params);
-    return res.send(`Watch Video #${req.params.id}`);
-};
+const trending = (req, res) => res.render('home');
+const see = (req, res) => res.render('watch');
 const edit = (req, res) => {
     return res.send('Edit');
 };

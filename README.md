@@ -32,3 +32,8 @@ nodemon --exec npm run babel-node -- path/to/script.js
 #### Express
 https://expressjs.com/ko/4x/api.html#res.send
 
+### Pug
+app.set('view engine', 'pug');
+app.set() / views / process.cwd() + '/view' => '/src/views'
+
+
