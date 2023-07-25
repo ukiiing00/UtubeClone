@@ -10,7 +10,7 @@ const app = express();
 const logger = morgan('dev'); // morgan() has 5 options
 
 app.set('view engine', 'pug');
-app.set('views', process.cwd() + '/src/views');
+app.set('views', process.cwd() + '/src/views'); // current working directory
 app.set('x-powered-by', false);
 app.use(logger);
 
