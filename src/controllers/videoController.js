@@ -33,12 +33,17 @@ const watch = (req, res) => {
     const video = videos[id - 1];
     return res.render('watch', { pageTitle: `Watch ${video.title}`, video });
 };
-const edit = (req, res) => res.render('edit');
-const search = (req, res) => res.send('Search');
-const upload = (req, res) => res.send('Upload');
-const deleteVideo = (req, res) => {
-    return res.send('Delete Video');
+const getEdit = (req, res) => {
+    const { id } = req.params;
+    const video = videos[id - 1];
+    res.render('edit', { pageTitle: `Editing: ${video.title}`, video });
+};
+const postEdit = (req, res) => {
+    const { id } = req.params;
+    const { title } = req.body;
+    videos[id - 1].title = title;
+    return res.redirect(`/videos/${id}`);
 };
 
 export default trending;
-export { watch, edit, search, deleteVideo, upload };
+export { watch, getEdit, postEdit };
