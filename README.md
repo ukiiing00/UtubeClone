@@ -36,4 +36,8 @@ https://expressjs.com/ko/4x/api.html#res.send
 app.set('view engine', 'pug');
 app.set() / views / process.cwd() + '/view' => '/src/views'
 
-
+### MongoDB
+인텔맥: mongod --config /usr/local/etc/mongod.conf --fork
+터미널 -> mongo
+connecting to: ip copy
+db.js
