@@ -41,3 +41,5 @@ app.set() / views / process.cwd() + '/view' => '/src/views'
 터미널 -> mongo
 connecting to: ip copy
 db.js
+
+npm i mongoose
