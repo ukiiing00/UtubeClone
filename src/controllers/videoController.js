@@ -4,7 +4,7 @@ let videos = [
         rating: 5,
         comments: 2,
         createdAt: '2 minutes ago',
-        views: 59,
+        views: 1,
         id: 1,
     },
     {
@@ -13,7 +13,7 @@ let videos = [
         comments: 2,
         createdAt: '2 minutes ago',
         views: 59,
-        id: 1,
+        id: 2,
     },
     {
         title: 'Third Video',
@@ -21,17 +21,17 @@ let videos = [
         comments: 2,
         createdAt: '2 minutes ago',
         views: 59,
-        id: 1,
+        id: 3,
     },
 ];
 
 const trending = (req, res) => {
     res.render('home', { pageTitle: 'Home', videos });
 };
-const see = (req, res) => {
+const watch = (req, res) => {
     const { id } = req.params;
     const video = videos[id - 1];
-    return res.render('watch', { pageTitle: `Watch ${video.title}` });
+    return res.render('watch', { pageTitle: `Watch ${video.title}`, video });
 };
 const edit = (req, res) => res.render('edit');
 const search = (req, res) => res.send('Search');
@@ -41,4 +41,4 @@ const deleteVideo = (req, res) => {
 };
 
 export default trending;
-export { see, edit, search, deleteVideo, upload };
+export { watch, edit, search, deleteVideo, upload };
