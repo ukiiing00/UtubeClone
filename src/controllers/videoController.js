@@ -40,10 +40,29 @@ const getEdit = (req, res) => {
 };
 const postEdit = (req, res) => {
     const { id } = req.params;
-    const { title } = req.body;
+    const { title } = req.body; // javascript representation
     videos[id - 1].title = title;
     return res.redirect(`/videos/${id}`);
 };
 
+const getUpload = (req, res) => {
+    return res.render('upload', { pageTitle: `Upload Video` });
+};
+
+const postUpload = (req, res) => {
+    // here we will add a video to the videos array
+    const { title } = req.body;
+    const newVideo = {
+        title: title,
+        rating: 0,
+        comments: 0,
+        createdAt: 'just now',
+        views: 0,
+        id: videos.length + 1,
+    };
+    videos.push(newVideo);
+    return res.redirect('/');
+};
+
 export default trending;
-export { watch, getEdit, postEdit };
+export { watch, getEdit, postEdit, getUpload, postUpload };
