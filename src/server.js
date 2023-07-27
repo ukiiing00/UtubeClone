@@ -5,9 +5,9 @@
 
 import express from 'express';
 import morgan from 'morgan';
-import globalRouter from './routers/globalRouter';
 import videoRouter from './routers/videoRouter';
 import userRouter from './routers/userRouter';
+import rootRouter from './routers/rootRouter';
 
 const app = express();
 const logger = morgan('dev'); // morgan() has 5 options
@@ -21,7 +21,7 @@ app.use(logger);
 app.use(express.urlencoded({ extended: true }));
 
 // Router
-app.use('/', globalRouter);
+app.use('/', rootRouter);
 app.use('/videos', videoRouter);
 app.use('/users', userRouter);
 
