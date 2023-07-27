@@ -41,8 +41,13 @@ app.set() / views / process.cwd() + '/view' => '/src/views'
 터미널 -> mongo
 connecting to: ip copy
 db.js
+npm i mongoose
 
 #### Mongoose All Schema Types Options
 https://mongoosejs.com/docs/schematypes.html
 
-npm i mongoose
+#### Mongoose Middleware
+https://mongoosejs.com/docs/middleware.html
+
+#### MongoDB Operators
+https://www.mongodb.com/docs/manual/reference/operator/query/
