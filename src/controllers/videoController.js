@@ -2,7 +2,6 @@ import Video from '../models/Video';
 
 const home = async (req, res) => {
     const videos = await Video.find({});
-    console.log(videos);
     return res.render('home', { pageTitle: 'Home', videos });
 };
 const watch = async (req, res) => {
@@ -14,7 +13,6 @@ const watch = async (req, res) => {
 const getEdit = async (req, res) => {
     const { id } = req.params;
     const video = await Video.findById(id);
-    console.log(video);
     if (!video) return res.render('404', { pageTitle: 'Video not found' });
     return res.render('edit', { pageTitle: `Edit ${video.title}`, video });
 };
@@ -43,7 +41,7 @@ const postUpload = async (req, res) => {
         await Video.create({
             title,
             description,
-            hashtags: hashtags.split(',').map((word) => `#${word}`),
+            hashtags,
         });
         return res.redirect('/');
     } catch (error) {
