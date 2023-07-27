@@ -42,4 +42,7 @@ app.set() / views / process.cwd() + '/view' => '/src/views'
 connecting to: ip copy
 db.js
 
+#### Mongoose All Schema Types Options
+https://mongoosejs.com/docs/schematypes.html
+
 npm i mongoose

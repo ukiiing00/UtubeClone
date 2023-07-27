@@ -1,3 +1,4 @@
+import { error } from 'firebase-functions/logger';
 import Video from '../models/Video';
 
 const home = async (req, res) => {
@@ -26,17 +27,20 @@ const getUpload = (req, res) => {
 const postUpload = async (req, res) => {
     // here we will add a video to the videos array
     const { title, description, hashtags } = req.body;
-    await Video.create({
-        title,
-        description,
-        createdAt: Date.now(),
-        meta: {
-            views: 0,
-            rating: 0,
-        },
-        hashtags: hashtags.split(',').map((word) => `#${word}`),
-    });
-    return res.redirect('/');
+    try {
+        await Video.create({
+            title,
+            description,
+            hashtags: hashtags.split(',').map((word) => `#${word}`),
+        });
+        return res.redirect('/');
+    } catch (error) {
+        console.log(error);
+        return res.render('upload', {
+            pageTitle: `Upload Video`,
+            errorMessage: error._message,
+        });
+    }
 };
 
 export default home;
