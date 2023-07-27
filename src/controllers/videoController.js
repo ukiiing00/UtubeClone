@@ -1,5 +1,9 @@
-const home = (req, res) => {
-    res.render('home', { pageTitle: 'Home' });
+import Video from '../models/Video';
+
+const home = async (req, res) => {
+    const videos = await Video.find({});
+    console.log(videos);
+    return res.render('home', { pageTitle: 'Home', videos });
 };
 const watch = (req, res) => {
     const { id } = req.params;
@@ -19,10 +23,19 @@ const getUpload = (req, res) => {
     return res.render('upload', { pageTitle: `Upload Video` });
 };
 
-const postUpload = (req, res) => {
+const postUpload = async (req, res) => {
     // here we will add a video to the videos array
-    const { title } = req.body;
-
+    const { title, description, hashtags } = req.body;
+    await Video.create({
+        title,
+        description,
+        createdAt: Date.now(),
+        meta: {
+            views: 0,
+            rating: 0,
+        },
+        hashtags: hashtags.split(',').map((word) => `#${word}`),
+    });
     return res.redirect('/');
 };
 
