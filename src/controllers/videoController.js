@@ -6,9 +6,11 @@ const home = async (req, res) => {
     console.log(videos);
     return res.render('home', { pageTitle: 'Home', videos });
 };
-const watch = (req, res) => {
+const watch = async (req, res) => {
     const { id } = req.params;
-    return res.render('watch', { pageTitle: `Watch` });
+    const video = await Video.findById(id);
+    console.log(video);
+    return res.render('watch', { pageTitle: video.title, video });
 };
 const getEdit = (req, res) => {
     const { id } = req.params;
