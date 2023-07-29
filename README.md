@@ -58,3 +58,9 @@ npm i express-session
 
 #### connect-mongo
 npm i connect-mongo
+
+### GitHub Login
+https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps
+
+### fetch
+npm i node-fetch
