@@ -2,7 +2,6 @@
     express things
     server configuration file 
 */
-
 import express from 'express';
 import morgan from 'morgan';
 import session from 'express-session';
@@ -26,11 +25,14 @@ app.use(express.urlencoded({ extended: true }));
 //session
 app.use(
     session({
-        secret: 'Hello!',
+        secret: process.env.COOKIE_SECRET,
         resave: false,
         saveUninitialized: false, // only login user
+        cookie: {
+            maxAge: 20000,
+        },
         store: MongoStore.create({
-            mongoUrl: 'mongodb://127.0.0.1:27017/utube',
+            mongoUrl: process.env.DB_URL,
         }),
     })
 );
