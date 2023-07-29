@@ -10,6 +10,7 @@ import videoRouter from './routers/videoRouter';
 import userRouter from './routers/userRouter';
 import rootRouter from './routers/rootRouter';
 import { localsMiddleware } from './middlewares';
+import MongoStore from 'connect-mongo';
 
 const app = express();
 const logger = morgan('dev'); // morgan() has 5 options
@@ -26,8 +27,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(
     session({
         secret: 'Hello!',
-        resave: true,
-        saveUninitialized: true,
+        resave: false,
+        saveUninitialized: false, // only login user
+        store: MongoStore.create({
+            mongoUrl: 'mongodb://127.0.0.1:27017/utube',
+        }),
     })
 );
 

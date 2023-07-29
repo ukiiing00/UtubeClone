@@ -55,3 +55,6 @@ https://www.mongodb.com/docs/manual/reference/operator/query/
 
 ### express-session
 npm i express-session
+
+#### connect-mongo
+npm i connect-mongo

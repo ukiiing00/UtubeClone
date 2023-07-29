@@ -55,6 +55,7 @@ const postLogin = async (req, res) => {
             errorMessage: 'Wrong Password',
         });
     }
+    // initialize Session => saveUninitialized : false
     req.session.loggedIn = true;
     req.session.user = user;
     return res.redirect('/');
