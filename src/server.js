@@ -9,6 +9,7 @@ import session from 'express-session';
 import videoRouter from './routers/videoRouter';
 import userRouter from './routers/userRouter';
 import rootRouter from './routers/rootRouter';
+import { localsMiddleware } from './middlewares';
 
 const app = express();
 const logger = morgan('dev'); // morgan() has 5 options
@@ -35,16 +36,13 @@ app.use(
 //     next();
 // });
 
+app.use(localsMiddleware);
+
 app.use((req, res, next) => {
     req.sessionStore.all((error, sessions) => {
         console.log(sessions);
         next();
     });
-});
-
-app.get('/add-one', (req, res, next) => {
-    req.session.tomato += 1;
-    return res.send(`${req.session.id} ${req.session.tomato}`);
 });
 
 // Router

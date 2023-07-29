@@ -55,7 +55,8 @@ const postLogin = async (req, res) => {
             errorMessage: 'Wrong Password',
         });
     }
-
+    req.session.loggedIn = true;
+    req.session.user = user;
     return res.redirect('/');
 };
 const edit = (req, res) => res.send('Edit User');

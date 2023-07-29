@@ -30,6 +30,7 @@ nodemon --exec npm run babel-node -- path/to/script.js
 파일이 수정되면 재실행 해줌
 
 #### Express
+ npm i express
 https://expressjs.com/ko/4x/api.html#res.send
 
 ### Pug
@@ -51,3 +52,6 @@ https://mongoosejs.com/docs/middleware.html
 
 #### MongoDB Operators
 https://www.mongodb.com/docs/manual/reference/operator/query/
+
+### express-session
+npm i express-session
