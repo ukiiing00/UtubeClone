@@ -42,7 +42,7 @@ const getLogin = (req, res) => res.render('login', { pageTitle: 'Login' });
 const postLogin = async (req, res) => {
     const { username, password } = req.body;
     const pageTitle = 'Login';
-    const user = await User.findOne({ username });
+    const user = await User.findOne({ username, socialOnly: false });
     const ok = await bcrypt.compare(password, user.password);
     if (!user) {
         return res.status(400).render('login', {
@@ -60,10 +60,6 @@ const postLogin = async (req, res) => {
     req.session.user = user;
     return res.redirect('/');
 };
-const edit = (req, res) => res.send('Edit User');
-const remove = (req, res) => res.send('Remove User');
-const logout = (req, res) => res.send('Log out');
-const see = (req, res) => res.send('See');
 
 const startGithubLogin = (req, res) => {
     const baseUrl = `https://github.com/login/oauth/authorize`;
@@ -122,13 +118,10 @@ const finishGithubLogin = async (req, res) => {
         if (!emailObj) {
             return res.redirect('/login');
         }
-        const existingUser = await User.findOne({ email: emailObj.email });
-        if (existingUser) {
-            req.session.loggedIn = true;
-            req.session.user = existingUser;
-            return res.redirect('/');
-        } else {
-            const user = await User.create({
+        let user = await User.findOne({ email: emailObj.email });
+        if (!user) {
+            user = await User.create({
+                avatarUrl: userData.avatar_url,
                 name: userData.name,
                 username: userData.login,
                 email: emailObj.email,
@@ -136,21 +129,34 @@ const finishGithubLogin = async (req, res) => {
                 location: userData.location,
                 socialOnly: 'true',
             });
-            console.log('user', user);
-            req.session.loggedIn = true;
-            req.session.user = user;
-            return res.redirect('/');
         }
+        console.log('user', user);
+        req.session.loggedIn = true;
+        req.session.user = user;
+        return res.redirect('/');
     } else {
         res.redirect('/login');
     }
 };
 
+const getEdit = (req, res) => {
+    return res.render('edit-profile', { pageTitle: 'Edit Profile' });
+};
+const postEdit = (req, res) => {
+    return res.render('edit-profile');
+};
+
+const logout = (req, res) => {
+    req.session.destroy();
+    res.redirect('/');
+};
+const see = (req, res) => res.send('See User');
+
 export {
     getJoin,
     postJoin,
-    edit,
-    remove,
+    getEdit,
+    postEdit,
     getLogin,
     postLogin,
     logout,
