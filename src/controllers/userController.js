@@ -29,7 +29,7 @@ const postJoin = async (req, res) => {
             password,
             location,
         });
-        res.redirect('login');
+        return res.redirect('/login');
     } catch {
         return res.status(400).render('join', {
             pageTitle: 'Join',
@@ -99,14 +99,48 @@ const finishGithubLogin = async (req, res) => {
     if ('access_token' in tokenRequest) {
         // access api
         const { access_token } = tokenRequest;
-        const userRequest = await (
-            await fetch('https://api.github.com/user', {
+        const apiUrl = 'https://api.github.com';
+        const userData = await (
+            await fetch(`${apiUrl}/user`, {
                 headers: {
                     Authorization: `token ${access_token}`,
                 },
             })
         ).json();
-        console.log(userRequest);
+        console.log('userData', userData);
+        const emailData = await (
+            await fetch(`${apiUrl}/user/emails`, {
+                headers: {
+                    Authorization: `token ${access_token}`,
+                },
+            })
+        ).json();
+        const emailObj = emailData.find(
+            (email) => email.primary === true && email.verified === true
+        );
+        console.log('emailObj', emailObj);
+        if (!emailObj) {
+            return res.redirect('/login');
+        }
+        const existingUser = await User.findOne({ email: emailObj.email });
+        if (existingUser) {
+            req.session.loggedIn = true;
+            req.session.user = existingUser;
+            return res.redirect('/');
+        } else {
+            const user = await User.create({
+                name: userData.name,
+                username: userData.login,
+                email: emailObj.email,
+                password: '',
+                location: userData.location,
+                socialOnly: 'true',
+            });
+            console.log('user', user);
+            req.session.loggedIn = true;
+            req.session.user = user;
+            return res.redirect('/');
+        }
     } else {
         res.redirect('/login');
     }
