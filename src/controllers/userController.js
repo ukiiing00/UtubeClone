@@ -43,13 +43,14 @@ const postLogin = async (req, res) => {
     const { username, password } = req.body;
     const pageTitle = 'Login';
     const user = await User.findOne({ username, socialOnly: false });
-    const ok = await bcrypt.compare(password, user.password);
     if (!user) {
         return res.status(400).render('login', {
             pageTitle,
             errorMessage: 'An account with this username does not exists.',
         });
-    } else if (!ok) {
+    }
+    const ok = await bcrypt.compare(password, user.password);
+    if (!ok) {
         return res.status(400).render('login', {
             pageTitle,
             errorMessage: 'Wrong Password',
