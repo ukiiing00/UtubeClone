@@ -62,5 +62,10 @@ npm i connect-mongo
 ### GitHub Login
 https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps
 
-### fetch
-npm i node-fetch
+### Multer
+https://www.npmjs.com/package/multer
+
+npm i multer
+
+Don't forget the enctype="multipart/form-data" in your form.
+
