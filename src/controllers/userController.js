@@ -143,8 +143,28 @@ const finishGithubLogin = async (req, res) => {
 const getEdit = (req, res) => {
     return res.render('edit-profile', { pageTitle: 'Edit Profile' });
 };
-const postEdit = (req, res) => {
-    return res.render('edit-profile');
+const postEdit = async (req, res) => {
+    console.log(req);
+    const {
+        session: {
+            user: { _id },
+        },
+        body: { name, email, username, location },
+    } = req;
+    const updatedUser = await User.findByIdAndUpdate(
+        _id,
+        {
+            name,
+            email,
+            username,
+            location,
+        },
+        {
+            new: true, // true: return new User, false: return old User
+        }
+    );
+    req.session.user = updatedUser;
+    return res.redirect('/users/edit');
 };
 
 const logout = (req, res) => {
