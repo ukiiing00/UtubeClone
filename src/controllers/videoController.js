@@ -36,6 +36,7 @@ const getUpload = (req, res) => {
 };
 
 const postUpload = async (req, res) => {
+    const { path: fileUrl } = req.file;
     // here we will add a video to the videos array
     const { title, description, hashtags } = req.body;
     try {
@@ -43,6 +44,7 @@ const postUpload = async (req, res) => {
             title,
             description,
             hashtags: Video.formatHashtags(hashtags),
+            fileUrl,
         });
         return res.redirect('/');
     } catch (error) {
