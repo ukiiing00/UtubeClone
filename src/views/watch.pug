@@ -7,8 +7,9 @@ block content
         small=video.createdAt
         h3 #{video.meta.views} #{video.meta.views < 2? "view" : "views"}
     div 
-        small Uploaded by #{owner.name}
-    if String(video.owner) === String(loggedInUser._id) 
+        small Uploaded by 
+            a(href=`/users/${video.owner._id}`)  #{video.owner.name}
+    if String(video.owner._id) === String(loggedInUser._id) 
         //- /link : absolute url /root -> /link,  
         //- link : relative url  /root/link -> root/other
         a(href=`${video.id}/edit`) Edit Video &rarr;
