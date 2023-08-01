@@ -1,6 +1,6 @@
 # UTUBE Clone
 
-## SET UP
+## Backend SET UP
 
 ### npm init
 package.json setting
@@ -69,3 +69,38 @@ npm i multer
 
 Don't forget the enctype="multipart/form-data" in your form.
 
+## Frontend SET UP
+
+### WEBPACK
+React, React-Native, VUE. NEXT 등 대부분 WEBPACK을 포함하고 있음.
+
+npm i webpack webpack-cli -D
+
+Webpack 시작하기: https://webpack.kr/guides/getting-started/
+Webpack 설정: https://webpack.kr/concepts/configuration/
+
+Typescript환경에서 Webpack 설정하기
+npm install --save-dev typescript ts-loader webpack webpack-cli
+https://webpack.kr/guides/typescript/
+
+#### Using a Configuration
+
+webpack.config.js
+from entry
+to output
+by module
+
+entry => mkdir src/folder -> browser exec folder
+
+#### NPM Script
+"assets": "webpack --config webpack.config.js" 
+
+#### rules
+각각의 파일 종류에 따라 어떤 전환을 할 건지 결정하는 것
+use *-loader 
+
+#### Babel loader
+https://www.npmjs.com/package/babel-loader
+
+Build system - Webpack
+npm install --save-dev babel-loader @babel/core
