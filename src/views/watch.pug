@@ -1,17 +1,14 @@
-extends base.pug
+extends base
 
 block content
-    video(src="/"+video.fileUrl, controls, width=400, height=200) 
-    div 
+    video(src="/" + video.fileUrl, controls)
+    div
         p=video.description
         small=video.createdAt
-        h3 #{video.meta.views} #{video.meta.views < 2? "view" : "views"}
-    div 
+    div
         small Uploaded by 
-            a(href=`/users/${video.owner._id}`)  #{video.owner.name}
-    if String(video.owner._id) === String(loggedInUser._id) 
-        //- /link : absolute url /root -> /link,  
-        //- link : relative url  /root/link -> root/other
+            a(href=`/users/${video.owner._id}`)=video.owner.name
+    if String(video.owner._id) === String(loggedInUser._id)
         a(href=`${video.id}/edit`) Edit Video &rarr;
         br
         a(href=`${video.id}/delete`) Delete Video &rarr;
