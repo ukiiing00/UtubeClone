@@ -3,8 +3,15 @@ const video = document.getElementById('preview');
 
 let stream;
 let recorder;
+let videoFile;
 
-const handleDownload = async () => {};
+const handleDownload = async () => {
+    const a = document.createElement('a');
+    a.href = videoFile;
+    a.download = 'Myrecording.webm';
+    document.body.appendChild(a);
+    a.click();
+};
 
 const handleStop = async () => {
     startBtn.innerText = 'Start Recording';
@@ -17,13 +24,13 @@ const handleStart = async () => {
     startBtn.innerText = 'Stop Recording';
     startBtn.removeEventListener('click', handleStart);
     startBtn.addEventListener('click', handleStop);
-    recorder = new MediaRecorder(stream);
+    recorder = new MediaRecorder(stream, { mimeType: 'video/webm' });
 
     // Set ondataavailable to an event handler for the dataavailable event;
     // this will be called whenever data is available for you.
     recorder.ondataavailable = (event) => {
         console.log(event);
-        const videoFile = URL.createObjectURL(event.data);
+        videoFile = URL.createObjectURL(event.data);
         video.srcObject = null;
         video.src = videoFile;
         video.loop = true;
