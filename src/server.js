@@ -10,6 +10,7 @@ import userRouter from './routers/userRouter';
 import rootRouter from './routers/rootRouter';
 import { localsMiddleware } from './middlewares';
 import MongoStore from 'connect-mongo';
+import apiRouter from './routers/apiRouter';
 
 const app = express();
 const logger = morgan('dev'); // morgan() has 5 options
@@ -57,5 +58,6 @@ app.use('/static', express.static('assets'));
 app.use('/', rootRouter);
 app.use('/videos', videoRouter);
 app.use('/users', userRouter);
+app.use('/api', apiRouter);
 
 export default app;

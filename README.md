@@ -142,3 +142,10 @@ https://webpack.js.org/plugins/mini-css-extract-plugin/#publicpath
 
 CssMinimizerWebpackPlugin
 https://webpack.kr/plugins/css-minimizer-webpack-plugin/
+
+
+### VIDEO SETUP
+
+### regenerator-runtime
+Regenerator로 컴파일된 생성기 및 비동기 함수를 위한 독립 실행형 런타임입니다.
+npm i regenerator-runtime
