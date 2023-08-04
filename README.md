@@ -146,6 +146,12 @@ https://webpack.kr/plugins/css-minimizer-webpack-plugin/
 
 ### VIDEO SETUP
 
-### regenerator-runtime
+#### regenerator-runtime
 Regenerator로 컴파일된 생성기 및 비동기 함수를 위한 독립 실행형 런타임입니다.
 npm i regenerator-runtime
+
+#### HTMLMediaElement srcObject
+HTMLMediaElement 인터페이스의 srcObject 속성은 HTMLMediaElement와 연결된 미디어의 소스 역할을 하는 객체를 설정하거나 반환합니다.
+그 객체는 MediaStream, MediaSource, Blob 또는 파일(Blob에서 상속됨)일 수 있습니다.
+
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/srcObject
