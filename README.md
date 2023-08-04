@@ -154,4 +154,20 @@ npm i regenerator-runtime
 HTMLMediaElement 인터페이스의 srcObject 속성은 HTMLMediaElement와 연결된 미디어의 소스 역할을 하는 객체를 설정하거나 반환합니다.
 그 객체는 MediaStream, MediaSource, Blob 또는 파일(Blob에서 상속됨)일 수 있습니다.
 
+Older versions of the Media Source specification required using createObjectURL() to create an object URL then setting src to that URL. Now you can just set srcObject to the MediaStream directly.
+
 https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/srcObject
+
+#### MediaStream Recording API
+The process of recording a stream is simple:
+
+1. Set up a MediaStream or HTMLMediaElement (in the form of an <audio> or <video> element) to serve as the source of the media data.
+2. Create a MediaRecorder object, specifying the source stream and any desired options (such as the container's MIME type or the desired bit rates of its tracks).
+3. Set ondataavailable to an event handler for the dataavailable event; this will be called whenever data is available for you.
+4. Once the source media is playing and you've reached the point where you're ready to record video, call MediaRecorder.start() to begin recording.
+5. Your dataavailable event handler gets called every time there's data ready for you to do with as you will; the event has a data attribute whose value is a Blob that contains the media data. You can force a dataavailable event to occur, thereby delivering the latest sound to you so you can filter it, save it, or whatever.
+6. Recording stops automatically when the source media stops playing.
+7. You can stop recording at any time by calling MediaRecorder.stop().
+
+#### URL.createObjectURL()
+브라우저 메모리를 사용해서 저장하고 URL을 return해줌 
