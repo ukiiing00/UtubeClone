@@ -146,6 +146,11 @@ https://webpack.kr/plugins/css-minimizer-webpack-plugin/
 
 ### VIDEO SETUP
 
+#### MediaDevices.getUserMedia()
+The MediaDevices.getUserMedia() method prompts the user for permission to use a media input which produces a MediaStream with tracks containing the requested types of media.
+
+https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
+
 #### regenerator-runtime
 Regenerator로 컴파일된 생성기 및 비동기 함수를 위한 독립 실행형 런타임입니다.
 npm i regenerator-runtime
@@ -169,5 +174,15 @@ The process of recording a stream is simple:
 6. Recording stops automatically when the source media stops playing.
 7. You can stop recording at any time by calling MediaRecorder.stop().
 
+https://developer.mozilla.org/en-US/docs/Web/API/MediaStream_Recording_API
+
 #### URL.createObjectURL()
 브라우저 메모리를 사용해서 저장하고 URL을 return해줌 
+
+https://developer.mozilla.org/en-US/docs/Web/API/URL/createObjectURL_static
+
+### WebAssembly / ffmpeg
+
+npm install @ffmpeg/ffmpeg @ffmpeg/core
+
+WebAssembly(Wasm)는 스택 기반 가상 머신을 위한 이진 명령 형식입니다. Wasm은 프로그래밍 언어를 위한 이식 가능한 컴파일 대상으로 설계되어 클라이언트 및 서버 응용 프로그램을 위해 웹에 배포할 수 있습니다.
