@@ -183,6 +183,9 @@ https://developer.mozilla.org/en-US/docs/Web/API/URL/createObjectURL_static
 
 ### WebAssembly / ffmpeg
 
-npm install @ffmpeg/ffmpeg @ffmpeg/core
+npm install @ffmpeg/ffmpeg @ffmpeg/util
 
 WebAssembly(Wasm)는 스택 기반 가상 머신을 위한 이진 명령 형식입니다. Wasm은 프로그래밍 언어를 위한 이식 가능한 컴파일 대상으로 설계되어 클라이언트 및 서버 응용 프로그램을 위해 웹에 배포할 수 있습니다.
+
+https://ffmpegwasm.netlify.app/docs/migration
+
