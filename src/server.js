@@ -11,6 +11,7 @@ import rootRouter from './routers/rootRouter';
 import { localsMiddleware } from './middlewares';
 import MongoStore from 'connect-mongo';
 import apiRouter from './routers/apiRouter';
+import flash from 'express-flash';
 
 const app = express();
 const logger = morgan('dev'); // morgan() has 5 options
@@ -42,6 +43,8 @@ app.use(
 //     console.log(req.headers);
 //     next();
 // });
+
+app.use(flash());
 
 app.use(localsMiddleware);
 

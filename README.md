@@ -189,3 +189,7 @@ WebAssembly(Wasm)는 스택 기반 가상 머신을 위한 이진 명령 형식�
 
 https://ffmpegwasm.netlify.app/docs/migration
 
+### Express Flash
+Express 애플리케이션용 플래시 메시지
+플래시는 플래시 메시지를 정의하고 요청을 리디렉션하지 않고 렌더링할 수 있는 기능이 있는 connect-flash의 확장입니다.
+npm i express-flash
