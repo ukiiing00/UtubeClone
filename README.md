@@ -193,3 +193,22 @@ https://ffmpegwasm.netlify.app/docs/migration
 Express 애플리케이션용 플래시 메시지
 플래시는 플래시 메시지를 정의하고 요청을 리디렉션하지 않고 렌더링할 수 있는 기능이 있는 connect-flash의 확장입니다.
 npm i express-flash
+
+### fetch()
+https://developer.mozilla.org/en-US/docs/Web/API/fetch
+
+express.text([options])
+Express에 내장된 미들웨어 기능입니다.
+body-parser를 기반으로 request payload로 전달한 문자열을 파싱합니다.
+https://expressjs.com/ko/api.html#express.text
+
+express.json([options])
+Express에 내장된 미들웨어 기능입니다.
+body-parser를 기반으로 request payload로 전달한 JSON을 파싱합니다.
+문자열을 받아서 json으로 바꿔줍니다.
+주의할 점은 express.json()은 header에 Content-Type이 express.json()의 기본 값인 "application/json"과 일치하는 request만 보는 미들웨어를 반환합니다.
+다시 말해, headers: { "Content-type": "application/json" }인 request만 express.json()을 실행한다.
+https://expressjs.com/ko/api.html#express.json
+
+https://gomakethings.com/how-to-send-data-to-an-api-with-the-vanilla-js-fetch-method/#sending-data-as-a-json-object
+

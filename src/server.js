@@ -23,6 +23,7 @@ app.set('x-powered-by', false);
 // middleware
 app.use(logger);
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 //session
 app.use(
@@ -44,6 +45,7 @@ app.use(
 //     next();
 // });
 
+// flash message
 app.use(flash());
 
 app.use(localsMiddleware);
