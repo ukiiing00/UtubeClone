@@ -15,6 +15,6 @@ const commentSchema = new mongoose.Schema({
     createdAt: { type: Date, required: true, default: Date.now },
 });
 
-const Comment = mongoose.model('Commnet', commentSchema);
+const Comment = mongoose.model('Comment', commentSchema);
 
 export default Comment;
